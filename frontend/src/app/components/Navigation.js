@@ -28,7 +28,7 @@ export default function Navigation() {
           {contxt.user ? (
             <>
               <li><Link href="/dashboard">Dashboard</Link></li>
-              <li onClick={handleLogout}>Logout</li>
+              <li onClick={handleLogout} className="lgout">Logout</li>
             </>
           ) : (
             <>

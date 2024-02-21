@@ -51,6 +51,11 @@ python manage.py migrate
 
 After successfully setting up and installing the dependencies and setting up the Database start your backend Django server by running the command below from the `/server/` directory.
 
+Create a .env file in the root level of the project to contain GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET and SECRET_KEY. A default value has been added to ensure the project run, but the google social authentication cant be tested if actualy google credentials were not provided. However, the app can still be tested with email and password authentication.
+
+
+NB: Email verification was not added to reduce, but in a real world application, email verification will be added.
+
 ```bash
 python manage.py runserver
 ```

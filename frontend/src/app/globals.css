@@ -16,6 +16,10 @@ a, a:active, a:visited{
     font-weight: bolder;
 
 }
+.lgout{
+    cursor:pointer;
+    color: #ff0000;
+}
 nav{
     background-color: rgb(0,0,0,.7);
     display: flex;
