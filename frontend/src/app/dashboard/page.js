@@ -15,6 +15,38 @@ export default function Dashboard() {
   const [edit, setEdit ] = useState(null)
   const contxt = useContext(UserContext)
   const router = useRouter();
+  const [todos, setTodos] = useState(null)
+  useEffect(() => {
+    setLoading(true)
+    const fetchData = async () => {
+      try {
+        const token = contxt.user?.tokens.access
+        const response = await fetch('http://localhost:8000/api/v1/todos/', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        if (!response.ok) {
+          console.log(response.json())
+          // if (response.status === 401){
+          //   contxt.auth(null)
+          //   return;
+          // }
+          throw new Error('Network response was not ok');
+        }
+        const jsonData = await response.json();
+        setTodos(await jsonData);
+        setLoading(false);
+      } catch (error) {
+        setLoading(false);
+        console.log(error)
+      }
+    };
+
+    fetchData();
+    return () => {
+    };
+  }, []); ;
   useEffect(() => {
     if (!contxt.user) {
       router.push('/login', undefined, { shallow: true, replace: true });
@@ -28,7 +60,7 @@ export default function Dashboard() {
   <>
   {loading ? <><Loading/></>: <>
     {!modify ? 
-    <MainDashboard setModify= {setModify} setCreate = {setCreate} editing={editing} setLoading={setLoading}/> 
+    <MainDashboard setModify= {setModify} setCreate = {setCreate} editing={editing} setLoading={setLoading} todos={todos}/> 
     :
     create ? <New setModify= {setModify} setCreate = {setCreate} setLoading={setLoading}/>
     :

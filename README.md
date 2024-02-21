@@ -62,6 +62,20 @@ python manage.py runserver
 
 The server should start on port 8000 provided no other process is running on port 8000 on the machine
 
+# Backend Endpoints
+
+
+GET / => Swagger Documentation UI
+POST /auth/login/  => Login endpoint
+POST /auth/signup/  => Signup endpoint
+POST /api/token/  => Generate token for user
+POST /api/token/refresh  => Generate token for user from refresh token
+GET /api/v1/todos/ => Get all todos for current user
+POST /api/v1/todos/ => Create todo for crrent 
+GET /api/v1/single_todos/:id => Retrieve  todo with given id if found
+PATCH /api/v1/single_todos/:id => Update  todo with given id if found
+DELETE /api/v1/single_todos/:id => Delete  todo with given id if found
+
 
 ## Setting up the Frontend
 

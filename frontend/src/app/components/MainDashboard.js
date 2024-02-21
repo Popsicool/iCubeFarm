@@ -5,7 +5,7 @@ import { UserContext } from "../layout";
 import { useRouter } from 'next/navigation';
 
 
-export default function MainDashboard({setModify, setCreate, editing, setLoading}) {
+export default function MainDashboard({setModify, setCreate, editing, setLoading, todos}) {
   const user = useContext(UserContext).user
   const router = useRouter();
   useEffect(() => {
@@ -13,33 +13,14 @@ export default function MainDashboard({setModify, setCreate, editing, setLoading
       router.push('/login', undefined, { shallow: true, replace: true });
     }
   }, [user, router]);
-  const [todos, setTodos] = useState([])
-  useEffect(() => {
-    setLoading(true)
-    const fetchData = async () => {
-      try {
-        const token = user.tokens.access
-        const response = await fetch('http://localhost:8000/api/v1/todos/', {
-          headers: {
-            'Authorization': `Bearer ${token}`
-          }
-        });
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const jsonData = await response.json();
-        console.log( await jsonData.results)
-        setTodos(await jsonData.results);
-        setLoading(false);
-      } catch (error) {
-        setLoading(false);
-      }
-    };
 
-    fetchData();
-    return () => {
-    };
-  }, []); ;
+  const handleDelete = (e) => {
+    setLoading(true)
+    let url = `http://localhost:8000/api/v1/single_todos/${e.id}`
+
+    setLoading(false)
+  }
+  
   const openNew = () => {
     setModify(true)
     setCreate(true)

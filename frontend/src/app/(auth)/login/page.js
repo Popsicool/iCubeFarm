@@ -1,6 +1,6 @@
 "use client"
 import { useRouter } from 'next/navigation';
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { UserContext } from '../../layout';
 import { Loading } from '@/app/components/Loading';
 import { toast } from 'react-toastify';
@@ -10,9 +10,11 @@ export default function Login(){
   const contxt = useContext(UserContext)
     const router = useRouter();
     const [loading, setLoading] = useState(false);
-    if (contxt.user){
-      router.push('/', undefined, { shallow: true, replace: true });
-  }
+    useEffect(() => {
+      if (contxt.user) {
+        router.push('/dashboard', undefined, { shallow: true, replace: true });
+      }
+    }, [contxt.user, router]);
   const [formData, setFormData] = useState({
     email: '',
     password: ''
