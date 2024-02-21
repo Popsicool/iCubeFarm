@@ -9,19 +9,21 @@ export default function Navigation() {
   const router = useRouter()
   const handleLogout = () => {
     contxt.auth(null)
-    window.location("http://localhost:3000/")
+    window.location.reload(false);
   }
   return (
     <nav>
       <div className="nav-left">
-        <Image
+
+      <Link href="/">
+      <Image
           src="/vercel.svg"
           alt="Vercel Logo"
           className="dark:invert"
           width={100}
           height={24}
           priority
-        />
+        /></Link>
       </div>
       <div className="nav-right">
         <ul>

@@ -18,9 +18,11 @@ a, a:active, a:visited{
 }
 .logon{
     padding: 2%;
-    background-color: #aeaeae;
-    color: #000000;
+    margin-top: 2%;
+    background-color: #000000;
+    color: #ffffff;
     border: 2px;
+    cursor: pointer;
 }
 .lgout{
     cursor:pointer;
@@ -227,5 +229,14 @@ footer{
     padding-top: 25%;
 }
 .home-inner{
+    font-size: 2rem;
+}
+
+.n-found{
+    display: grid;
+    place-items: center;
+}
+.n-found p{
+    margin-top: 10%;
     font-size: 2rem;
 }

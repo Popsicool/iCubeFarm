@@ -4,6 +4,7 @@ import { useState, useContext, useEffect } from 'react'
 import { UserContext } from '../../layout';
 import { Loading } from '@/app/components/Loading';
 import { toast } from 'react-toastify';
+import { signIn } from 'next-auth/react';
 
 
 export default function Login(){
@@ -61,21 +62,12 @@ export default function Login(){
       }
   };
   
-    const handleLogin =  () => {
-      setLoading(true);
-      fetch('http://localhost:8000/api/auth/github/', {
-        method: 'GET',
-        credentials: 'include',
-      })
-      .then (res => {
-        if (!res.ok){
-          throw new Error("something went wrong")
-        }
-        return res.json()
-      }).then(data => {
-        setLoading(false);
-      })
-    };
+  const handleSignIn = async () => {
+    const result = await signIn('github', { callbackUrl: '/' });
+    if (result.error) {
+      console.error('Sign in error:', result.error);
+    }
+  };
 
     return <>
     {loading ? <Loading/> :
@@ -106,7 +98,7 @@ export default function Login(){
       </div>
       <button type="submit" className='logon'>Log in</button>
           </form>
-        <button className="login-btn" onClick={handleLogin}>Login with Github</button>
+        <button className="login-btn" onClick={handleSignIn}>Login with Github</button>
 
         </div>
         </div>
