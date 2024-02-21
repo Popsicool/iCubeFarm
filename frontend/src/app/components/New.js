@@ -43,7 +43,6 @@ export default function New({setModify, setCreate, setLoading}){
             return;
           }
           const data = await response.json();
-          console.log(data)
             const key = Object.keys(data)[0];
             const errorMessage = `${key}: ${data[key][0]}`;
             toast.error(errorMessage)

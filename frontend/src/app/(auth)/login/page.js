@@ -104,7 +104,7 @@ export default function Login(){
           required
         />
       </div>
-      <button type="submit">Log in</button>
+      <button type="submit" className='logon'>Log in</button>
           </form>
         <button className="login-btn" onClick={handleLogin}>Login with Github</button>
 

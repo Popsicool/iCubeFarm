@@ -16,6 +16,12 @@ a, a:active, a:visited{
     font-weight: bolder;
 
 }
+.logon{
+    padding: 2%;
+    background-color: #aeaeae;
+    color: #000000;
+    border: 2px;
+}
 .lgout{
     cursor:pointer;
     color: #ff0000;

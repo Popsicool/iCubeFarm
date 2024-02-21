@@ -3,23 +3,46 @@ import { useState, useEffect, useContext } from "react";
 import { Loading } from "../components/Loading";
 import { UserContext } from "../layout";
 import { useRouter } from 'next/navigation';
-
+import { toast } from 'react-toastify';
 
 export default function MainDashboard({setModify, setCreate, editing, setLoading, todos}) {
   const user = useContext(UserContext).user
   const router = useRouter();
+  console.log(todos?.length)
   useEffect(() => {
     if (!user) {
       router.push('/login', undefined, { shallow: true, replace: true });
     }
   }, [user, router]);
 
-  const handleDelete = (e) => {
+  const handleDelete = async (e) => {
     setLoading(true)
-    let url = `http://localhost:8000/api/v1/single_todos/${e.id}`
-
-    setLoading(false)
-  }
+    try {
+      const response = await fetch(`http://localhost:8000/api/v1/single_todos/${e.id}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${user?.tokens.access}`,
+          'Content-Type': 'application/json'
+        },
+      });
+  
+      if (!response.ok) {
+        const data = await response.json();
+        const key = Object.keys(data)[0];
+            const errorMessage = `${key}: ${data[key][0]}`;
+            toast.error(errorMessage)
+        throw new Error('Failed to delete todo');
+      }
+      toast.success('Todo Deleted');
+      window.location.reload(false);
+  
+      console.log('Todo deleted successfully');
+    } catch (error) {
+      console.error('Error deleting todo:', error.message);
+    } finally {
+      setLoading(false)
+    }
+  };
   
   const openNew = () => {
     setModify(true)
@@ -33,7 +56,7 @@ export default function MainDashboard({setModify, setCreate, editing, setLoading
   return (
         <>
         <h3 className="welcome">Welcome back {user?.first_name} {user?.last_name}</h3>
-          {todos ? (
+          {todos?.length > 0 ? (
             <div className="todos">
               <div className="filters">
                 <div>
@@ -64,7 +87,7 @@ export default function MainDashboard({setModify, setCreate, editing, setLoading
                     <p className="status">{todo.status}</p>
                     <p className="status">{todo.date}</p>
                     <button className="status edit" onClick={() => openModify(todo)}>Edit</button>
-                    <button className="status delete">Delete</button>
+                    <button className="status delete" onClick={() => handleDelete(todo)}>Delete</button>
                 </div>
               ))}
               <button className="login-btn" onClick={openNew}>Create New</button>

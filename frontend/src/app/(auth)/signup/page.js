@@ -110,7 +110,7 @@ export default function SignUp(){
           required
         />
       </div>
-      <button type="submit">Sign Up</button>
+      <button type="submit" className='logon'>Sign Up</button>
           </form>
         <button className="login-btn">Sign up with Google</button>
 
