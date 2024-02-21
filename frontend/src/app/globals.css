@@ -1,0 +1,217 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+body{
+    width: 100vw;
+    overflow-x: hidden;
+}
+li{
+    list-style: none;
+}
+a, a:active, a:visited{
+    text-decoration: none;
+    color: #aeaeae;
+    font-weight: bolder;
+
+}
+nav{
+    background-color: rgb(0,0,0,.7);
+    display: flex;
+    justify-content: space-between;
+    height: 5vh;
+    align-items: center;
+}
+input{
+    width: 70%;
+    height: 3rem;
+    padding: 2%;
+}
+.nav-right{
+    width: 70%;
+    position: relative;
+}
+.close{
+    background: none;
+    color: #ffffff;
+    border: none;
+
+}
+.errorText{
+    color: #ff0000;
+    font-size: 1rem;
+}
+.newT{
+    text-align: center;
+    font-size: 3rem;
+    color: #ffffff;
+}
+label{
+    font-size: 2rem;
+    color: #ffffff;
+}
+.nav-right ul{
+    display: flex;
+    justify-content: space-around;
+}
+main{
+    min-height: 85vh;
+}
+footer{
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 2rem;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    height: 10vh;
+    align-items: center;
+}
+.Login-page{
+    height: 80vh;
+    display: grid;
+    place-items: center;
+    text-align: center;
+}
+.login-wrap{
+    width: 100%;
+}
+.login-wrap h3{
+    font-size: 3rem;
+}
+.login-btn{
+    margin-top: 5%;
+    padding: 1%;
+    cursor: pointer;
+    font-size: 2rem;
+    border: none;
+    border-radius: 10px;
+    background-color: #000000;
+    color: #ffffff;
+}
+.login-btn:hover{
+    background-color: #aeaeae;
+    color: #000000;
+}
+.todo{
+    color: #ffffff;
+    display: flex;
+    width:100%;
+    border-bottom: .5px solid #aeaeae;
+    padding-bottom: 2%;
+}
+.status{
+    width: 10%;
+}
+.title{
+    width:60%;
+}
+.todo-head{
+    border-bottom: 2px solid #aeaeae;
+    padding-bottom: 2%;
+    margin-bottom: 2%;
+}
+.todos{
+    width: 70%;
+    background-color: #1e1e1e;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5%;
+    margin-top: 5%;
+}
+.edit{
+    background-color: #1e1e1e;
+    color: #ffffff;
+    cursor: pointer;
+}
+.delete{
+    background-color: #ff0000;
+    color:#ffffff;
+    cursor: pointer;
+
+}
+.filters{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5%;
+}
+.filters div{
+    width:45%;
+    color:#ffffff;
+    display: flex;
+    gap:15px
+}
+.filter-btn{
+    background-color: #aeaeae;
+    border: none;
+    color:#ffffff;
+}
+.welcome{
+    margin: 3% 0;
+    text-align: center;
+    font-size: 2rem;
+    font-style: italic;
+}
+.auth-form{
+    background-color: #aeaeae;
+    color: #ffffff;
+    width: 70%;
+    margin: 0 auto;
+    padding:1% 0%;
+}
+.auth-form label{
+    text-align: left;
+}
+
+
+@media screen and (max-width:600px) {
+    footer{
+        font-size: 1rem;
+    }
+    .nav-right ul{
+        gap: 10px;
+        left:0px;
+    }
+    .login-wrap h3{
+        font-size: 1rem;
+    }
+    .login-btn{
+        font-size: 1rem;
+        padding: 2%;
+    }
+    .filters{
+        display: grid;
+    }
+    .filters div{
+        width:100%;
+        margin-bottom: 1rem;
+    }
+    .todo{
+        display: grid;
+    }
+    label{
+        font-size: 1rem;
+    }
+    .newT{
+        font-size: 2rem;
+    }
+    .status{
+        width:100%;
+        margin-top: 5%;
+    }
+    .login-btn{
+        width: 100%;
+    }
+    .welcome{
+        font-size: 1rem;
+    }
+}
+.home{
+    display: grid;
+    place-items: center;
+    padding-top: 25%;
+}
+.home-inner{
+    font-size: 2rem;
+}
