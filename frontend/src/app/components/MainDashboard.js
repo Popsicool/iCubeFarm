@@ -26,7 +26,8 @@ export default function MainDashboard({setModify, setCreate, editing, setLoading
           throw new Error('Network response was not ok');
         }
         const jsonData = await response.json();
-        setTodos(jsonData.results);
+        console.log( await jsonData.results)
+        setTodos(await jsonData.results);
         setLoading(false);
       } catch (error) {
         setLoading(false);
