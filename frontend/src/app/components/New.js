@@ -52,9 +52,8 @@ export default function New({setModify, setCreate, setLoading}){
         }
         toast.success('Todo created successfully');
         const data = await response.json();
-        contxt.auth(data)
         setLoading(false)
-        router.push('/dashboard', undefined, { shallow: true, replace: true });
+        window.location.reload(false);
   
       } catch (error) {
         console.error('Error:', error.message);

@@ -14,10 +14,13 @@ export default function Dashboard() {
   const [create, setCreate ] = useState(false)
   const [edit, setEdit ] = useState(null)
   const contxt = useContext(UserContext)
-    const router = useRouter();
-  if (!contxt.user){
-    router.push('/login', undefined, { shallow: true, replace: true });
-}
+  const router = useRouter();
+  useEffect(() => {
+    if (!contxt.user) {
+      router.push('/login', undefined, { shallow: true, replace: true });
+    }
+  }, [contxt.user, router]);
+
   const editing = (e) => {
   setEdit(e)
   }

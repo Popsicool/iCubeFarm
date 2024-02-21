@@ -8,9 +8,11 @@ import { useRouter } from 'next/navigation';
 export default function MainDashboard({setModify, setCreate, editing, setLoading}) {
   const user = useContext(UserContext).user
   const router = useRouter();
-  if (!user){
-    router.push('/login', undefined, { shallow: true, replace: true });
-}
+  useEffect(() => {
+    if (!user) {
+      router.push('/login', undefined, { shallow: true, replace: true });
+    }
+  }, [user, router]);
   const [todos, setTodos] = useState([])
   useEffect(() => {
     setLoading(true)
