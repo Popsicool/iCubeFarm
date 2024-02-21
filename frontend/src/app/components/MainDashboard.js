@@ -58,7 +58,7 @@ export default function MainDashboard({setModify, setCreate, editing, setLoading
         <h3 className="welcome">Welcome back {user?.first_name} {user?.last_name}</h3>
           {todos?.length > 0 ? (
             <div className="todos">
-              <div className="filters">
+              {/* <div className="filters">
                 <div>
                   <select>
                     <option>Pending</option>
@@ -75,7 +75,7 @@ export default function MainDashboard({setModify, setCreate, editing, setLoading
                   </form>
                 </div>
 
-              </div>
+              </div> */}
               <div className="todo todo-head">
                     <p className="title">Title</p>
                     <p className="status">Status</p>
@@ -85,9 +85,10 @@ export default function MainDashboard({setModify, setCreate, editing, setLoading
                 <div className="todo" key={todo.id}>
                     <p className="title">{todo.task}</p>
                     <p className="status">{todo.status}</p>
-                    <p className="status">{todo.date}</p>
+                    <p className="status">{todo.date_due}</p>
                     <button className="status edit" onClick={() => openModify(todo)}>Edit</button>
                     <button className="status delete" onClick={() => handleDelete(todo)}>Delete</button>
+                    {/* <button className="status delete" onClick={() => handleDelete(todo)}>Mark as Complete</button> */}
                 </div>
               ))}
               <button className="login-btn" onClick={openNew}>Create New</button>

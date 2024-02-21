@@ -46,7 +46,11 @@ input{
     background: none;
     color: #ffffff;
     border: none;
-
+    cursor: pointer;
+}
+.close:hover{
+    color: #2d0404;
+    background-color: #aeaeae;
 }
 .errorText{
     color: #ff0000;

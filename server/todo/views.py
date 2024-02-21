@@ -15,8 +15,6 @@ from drf_yasg import openapi
 from .models import Todo
 from django.utils import timezone
 from datetime import datetime
-import logging.config
-import colorlog
 import re
 
 # Create your views here.
@@ -24,7 +22,7 @@ import re
 def is_valid_date_format(date_string):
     pattern = re.compile(r'^\d{4}-\d{2}-\d{2}$')
     return bool(pattern.match(date_string))
-
+current_date = timezone.now()
 
 class ListTodosView(generics.GenericAPIView):
     permission_classes = [permissions.IsAuthenticated]
@@ -43,6 +41,7 @@ class ListTodosView(generics.GenericAPIView):
     )
     def get(self, request):
         user = request.user
+        self.queryset.filter(owner=user, date_due__lt=current_date).update(status="EXPIRED")
         queryset = self.queryset.filter(owner=user)
         param = self.request.query_params.get('status', None)
         param2 = self.request.query_params.get('start_date', None)

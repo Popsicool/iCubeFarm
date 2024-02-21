@@ -5,8 +5,6 @@ import { UserContext } from "../layout";
 export default function New({setModify, setCreate, setLoading}){
     const user = useContext(UserContext).user
     const auth = useContext(UserContext).auth
-    const [task, settask] = useState("")
-    const [date_due, setDate] = useState("")
     const [formData, setFormData] = useState({
       task: '',
       date_due: ''

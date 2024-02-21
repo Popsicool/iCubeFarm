@@ -28,7 +28,6 @@ export default function RootLayout({ children }) {
     }
     setUser(e)
   }
-
   useEffect(() => {
     const storedUser = localStorage.getItem('iCUBEUser');
     if (storedUser) {
