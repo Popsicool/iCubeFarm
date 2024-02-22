@@ -85,6 +85,9 @@ Navigate to the frontend directory and Run This command to install the required 
 npm install
 ```
 
+Create a .env.local file at the root level of the project to hold the GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET which will enable the frontend to communicate with the google authentication API
+
+
 start development server with the following command
 
 ```bash

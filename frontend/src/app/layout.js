@@ -4,6 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import './globals.css'
 
 export const UserContext = createContext(null);
@@ -39,10 +40,12 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
       <UserContext.Provider value={{user, auth}}>
-        <ToastContainer />
-        <Navigation user ={user} auth={auth}/>
-        <main>{children}</main>
-        <Footer/>
+        <GoogleOAuthProvider clientId={process.env.GOOGLE_CLIENT_ID}>
+          <ToastContainer />
+          <Navigation user ={user} auth={auth}/>
+          <main>{children}</main>
+          <Footer/>
+        </GoogleOAuthProvider>
         </UserContext.Provider>
 
       </body>

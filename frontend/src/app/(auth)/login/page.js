@@ -4,6 +4,7 @@ import { useState, useContext, useEffect } from 'react'
 import { UserContext } from '../../layout';
 import { Loading } from '@/app/components/Loading';
 import { toast } from 'react-toastify';
+import { GoogleLogin } from '@react-oauth/google';
 import { signIn } from 'next-auth/react';
 
 
@@ -61,13 +62,12 @@ export default function Login(){
         setLoading(false)
       }
   };
-  
-  const handleSignIn = async () => {
-    const result = await signIn('github', { callbackUrl: '/' });
-    if (result.error) {
-      console.error('Sign in error:', result.error);
-    }
-  };
+  const responseMessage = (response) => {
+    console.log(response)
+  }
+  const errorMessage = (error) => {
+    console.log(error)
+  }
 
     return <>
     {loading ? <Loading/> :
@@ -98,8 +98,8 @@ export default function Login(){
       </div>
       <button type="submit" className='logon'>Log in</button>
           </form>
-        <button className="login-btn" onClick={handleSignIn}>Login with Github</button>
 
+          <GoogleLogin className="login-btn" onSuccess ={responseMessage} onError={errorMessage}/>
         </div>
         </div>
     </div>
