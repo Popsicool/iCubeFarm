@@ -1,11 +1,10 @@
 "use client"
-import Image from "next/image";
 import { useRouter } from 'next/navigation';
 import { useContext, useState } from 'react'
 import { UserContext } from '../../layout';
 import { toast } from 'react-toastify';
 import { Loading } from "@/app/components/Loading";
-import { GoogleLogin } from '@react-oauth/google';
+import Social from '@/app/components/SocialLogin';
 
 
 export default function SignUp(){
@@ -22,12 +21,6 @@ export default function SignUp(){
         last_name: '',
         password: ''
       });
-      const responseMessage = (response) => {
-        console.log(response)
-      }
-      const errorMessage = (error) => {
-        console.log(error)
-      }
       const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prevState => ({
@@ -119,8 +112,7 @@ export default function SignUp(){
       </div>
       <button type="submit" className='logon'>Sign Up</button>
           </form>
-          <GoogleLogin className="login-btn" onSuccess ={responseMessage} onError={errorMessage}/>
-
+          <Social setLoading={setLoading} auth={contxt.auth}/>
         </div>
 
         </div>

@@ -4,8 +4,7 @@ import { useState, useContext, useEffect } from 'react'
 import { UserContext } from '../../layout';
 import { Loading } from '@/app/components/Loading';
 import { toast } from 'react-toastify';
-import { GoogleLogin } from '@react-oauth/google';
-import { signIn } from 'next-auth/react';
+import Social from '@/app/components/SocialLogin';
 
 
 export default function Login(){
@@ -62,12 +61,6 @@ export default function Login(){
         setLoading(false)
       }
   };
-  const responseMessage = (response) => {
-    console.log(response)
-  }
-  const errorMessage = (error) => {
-    console.log(error)
-  }
 
     return <>
     {loading ? <Loading/> :
@@ -99,8 +92,8 @@ export default function Login(){
       <button type="submit" className='logon'>Log in</button>
           </form>
 
-          <GoogleLogin className="login-btn" onSuccess ={responseMessage} onError={errorMessage}/>
-        </div>
+          <Social setLoading={setLoading} auth={contxt.auth}/>
+          </div>
         </div>
     </div>
     }
