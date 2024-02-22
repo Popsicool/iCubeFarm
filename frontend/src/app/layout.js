@@ -15,9 +15,6 @@ export const UserContext = createContext(null);
 // };
 
 
-
-// {"id":2,"email":"sam@gmail.com","tokens":{"refresh":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcwOTEzMjAyMSwiaWF0IjoxNzA4NTI3MjIxLCJqdGkiOiIwNmNhYzYwNjMzZWY0ZDhiOGY3MGI4NWI3ZTJkZGEzYiIsInVzZXJfaWQiOjJ9.2y8KZgQaF6O21q13nsx2Js9x1XMtC-qOMvzFZAhccZM","access":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA4NjEzNjIxLCJpYXQiOjE3MDg1MjcyMjEsImp0aSI6ImE1N2YxOTg0YTBjNjQwYzViNjQyZGQ4ZTg0MmJlNmJmIiwidXNlcl9pZCI6Mn0._1BqPjvcdC6KaOzsXyWYplqceyaxngixZbmKd4K9diI"},"first_name":"Samson","last_name":null}
-
 export default function RootLayout({ children }) {
   const [user, setUser] = useState(null);
   const auth = (e) => {
@@ -40,7 +37,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
       <UserContext.Provider value={{user, auth}}>
-        <GoogleOAuthProvider clientId={process.env.GOOGLE_CLIENT_ID}>
+        <GoogleOAuthProvider clientId="575974468902-scorafflscd64ck5mcpekf2ei13elmio.apps.googleusercontent.com">
           <ToastContainer />
           <Navigation user ={user} auth={auth}/>
           <main>{children}</main>
